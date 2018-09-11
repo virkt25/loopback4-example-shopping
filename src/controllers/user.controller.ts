@@ -38,10 +38,15 @@ export class UserController {
     console.log('time to save a user');
 
     // Save & Return Result
-    const savedUser = await this.userRepository.create(user);
-    console.log('saved user ... ', savedUser);
-    delete savedUser.password;
-    return savedUser;
+    try {
+      const savedUser = await this.userRepository.create(user);
+      console.log('saved user ... ', savedUser);
+      delete savedUser.password;
+      return savedUser;
+    } catch (err) {
+      console.log(err);
+      return err;
+    }
   }
 
   @get('/users/{id}')
