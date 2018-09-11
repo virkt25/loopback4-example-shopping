@@ -35,8 +35,11 @@ export class UserController {
     // Salt + Hash Password
     user.password = await hashAsync(user.password, 10);
 
+    console.log('time to save a user');
+
     // Save & Return Result
     const savedUser = await this.userRepository.create(user);
+    console.log('saved user ... ', savedUser);
     delete savedUser.password;
     return savedUser;
   }
