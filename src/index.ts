@@ -6,10 +6,18 @@
 import {ShoppingApplication} from './application';
 import {ApplicationConfig} from '@loopback/core';
 
+const cfenv = require('cfenv');
+const appEnv = cfenv.getAppEnv();
+
 export {ShoppingApplication};
 
-export async function main(options?: ApplicationConfig) {
+export async function main(options: ApplicationConfig = {}) {
+  options.rest = options.rest || {};
+
+  if (!appEnv.isLocal) options.rest.port = appEnv.port;
+
   const app = new ShoppingApplication(options);
+
   await app.boot();
   await app.start();
 
