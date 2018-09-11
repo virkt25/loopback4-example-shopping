@@ -1,8 +1,9 @@
 applications:
-- name: t-shopping
-  disk_quota: 1G
-  instances: 1
-  memory: 1G
-  routes:
-  - route: t-shopping.mybluemix.net
-  stack: cflinuxfs2
+  - name: t-shopping
+    disk_quota: 1G
+    instances: 1
+    memory: 1G
+    buildpack: sdk-for-nodejs
+    routes:
+      - route: t-shopping.mybluemix.net
+    stack: cflinuxfs2
