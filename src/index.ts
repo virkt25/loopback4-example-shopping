@@ -26,6 +26,8 @@ export async function main(options: ApplicationConfig = {}) {
     app.bind('datasources.config.user').to(userDataSource);
   }
 
+  console.log('cloudant url: ', userDataSource.url);
+
   await app.boot();
   await app.start();
 
