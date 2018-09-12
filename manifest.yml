@@ -3,7 +3,8 @@ applications:
     disk_quota: 256M
     instances: 1
     memory: 1G
-    buildpacks: sdk-for-nodejs
+    buildpacks:
+      - sdk-for-nodejs
     routes:
       - route: t-shopping.mybluemix.net
     stack: cflinuxfs2
